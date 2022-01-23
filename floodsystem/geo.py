@@ -15,12 +15,15 @@ from haversine import haversine, Unit # importing haversine library to calculate
 #stations = stationdata.build_station_list(True)
 #p = (0, 0) # assume monitoring station is at the origin
 
+#stations = stationdata.build_station_list(True)
+#p = (52.2053, 0.1218)
+
 def stations_by_distance(stations, p):
     station_name = []
     station_coord = []
     station_town = []
     for each_station in stations:
-        list_lines = str(each_station).splitlines() # splitting data in a list, each component = each line of station info
+        list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
         counter=0 # initialising counter to count each line of station info
         for each_line in list_lines:
             counter += 1 # adding one to counter for each line of station info e.g. 1 is Station name, 2 is id etc...
@@ -46,11 +49,12 @@ def stations_by_distance(stations, p):
         distance = sqrt((a-p[0]) ** 2 + (b-p[1]) ** 2)
         #  using pythagoras to find distance (because haversine function had issues (see attempts below)
         distances_list.append(distance)
-    station_coord_tuples = list(zip(station_name, distances_list))  # making a list of tuples for each name and coord
+    station_coord_tuples = list(zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
     sorted = sorted_by_key(station_coord_tuples, 1, reverse=False)
     return sorted  # sorting tuple according to distance
 
 
+#print(stations_by_distance(stations, p))
 
 '''
 distances = []
