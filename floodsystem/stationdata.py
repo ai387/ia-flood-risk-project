@@ -6,8 +6,9 @@ JSON objects fetched from the Internet and
 
 """
 
-from . import datafetcher
-from .station import MonitoringStation
+#from . import datafetcher
+import datafetcher
+from station import MonitoringStation
 
 
 def build_station_list(use_cache=True):
@@ -87,3 +88,6 @@ def update_water_levels(stations):
         if station.measure_id in measure_id_to_value:
             if isinstance(measure_id_to_value[station.measure_id], float):
                 station.latest_level = measure_id_to_value[station.measure_id]
+
+
+# print(build_station_list(use_cache=True))
