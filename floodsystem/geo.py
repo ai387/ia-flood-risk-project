@@ -38,16 +38,19 @@ def stations_by_distance(stations, p):
             if counter == 5: # if the item is the fifth in the list it is the town name
                 items = str(items)[11:-2] # getting rid of white spaces etc
                 station_town.append(items)
+
+    # turning coordinates from string in list into tuples with float numbers
     station_coord2 = []
     for i in station_coord:
         i = i.strip('()')
         i = i.split(',')
-        c = tuple(float(x) for x in i) #turning coordinates from string in list into tuples with float numbers
+        c = tuple(float(x) for x in i)
         station_coord2.append(c)
+
+    # using pythagoras to find distance (because haversine function had issues (see attempts below)
     distances_list = []
     for a, b in station_coord2:
         distance = sqrt((a-p[0]) ** 2 + (b-p[1]) ** 2)
-        #  using pythagoras to find distance (because haversine function had issues (see attempts below)
         distances_list.append(distance)
     station_coord_tuples = list(zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
     sorted = sorted_by_key(station_coord_tuples, 1, reverse=False)
