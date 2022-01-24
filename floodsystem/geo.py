@@ -70,9 +70,31 @@ def stations_by_distance(stations, p):
 
 
 # TASK 1C
-'''
+
 def stations_within_radius(stations, centre, r):
+
+
 '''
+2.1.3. Task 1C: stations within radius
+
+In the submodule geo implement a function that returns a list of all stations (type MonitoringStation) within radius r of a geographic coordinate x. The required function signature is:
+
+def stations_within_radius(stations, centre, r):
+where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.
+Demonstration program
+
+Provide a program file Task1C.py that uses the function geo.stations_within_radius to build a list of stations within 10 km of the Cambridge city centre (coordinate (52.2053, 0.1218)). Print the names of the stations, listed in alphabetical order. Representative output:
+
+['Bin Brook', 'Cambridge Baits Bite', "Cambridge Byron's Pool",
+ 'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
+ 'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
+
+'''
+
+
+
+
+
 
 #print(stations_by_distance(stations, p))
 
@@ -85,6 +107,7 @@ def stations_within_radius(stations, centre, r):
 #print(list_station)
 
 #stations = stationdata.build_station_list()
+
 '''
 
 distances = []
