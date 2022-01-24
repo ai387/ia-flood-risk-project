@@ -61,6 +61,61 @@ def build_station_list(use_cache=True):
 
     return stations
 
+'''
+#TASK 1C
+def build_station_listC(use_cache=True):
+
+    """
+    Returning data related to station name, coordinate of station.
+
+    Build and return a list of all river level monitoring stations
+    based on data fetched from the Environment agency. Each station is
+    represented as a MonitoringStation object.
+    The available data for some station is incomplete or not
+    available.
+
+    """
+
+    # Fetch station data
+    data = datafetcher.fetch_station_data(use_cache)
+
+    # Build list of MonitoringStation objects
+    stations = []
+    for e in data["items"]:
+        # Extract town string (not always available)
+        town = None
+        if 'town' in e:
+            town = e['town']
+
+        # Extract river name (not always available)
+        river = None
+        if 'riverName' in e:
+            river = e['riverName']
+
+        # Attempt to extract typical range (low, high)
+        try:
+            typical_range = (float(e['stageScale']['typicalRangeLow']),
+                             float(e['stageScale']['typicalRangeHigh']))
+        except Exception:
+            typical_range = None
+
+        try:
+            # Create mesure station object if all required data is
+            # available, and add to list
+            s = MonitoringStation(
+                station_id=e['@id'],
+                measure_id=e['measures'][-1]['@id'],
+                label=e['label'],
+                coord=(float(e['lat']), float(e['long'])),
+            stations.append(s)
+        except Exception:
+            # Not all required data on the station was available, so
+            # skip over
+            pass
+
+    return stations
+'''
+
 def update_water_levels(stations):
     """Attach level data contained in measure_data to stations"""
 

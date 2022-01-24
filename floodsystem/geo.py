@@ -8,16 +8,26 @@ geographical data.
 from math import sqrt
 from utils import sorted_by_key # noqa
 import station as st # importing the classes that are made in submodule
-import stationdata # importing all data abt the stations
+import stationdata
+from stationdata import build_station_list # importing all data abt the stations
+import datafetcher
+from station import MonitoringStation
 
 from haversine import haversine, Unit # importing haversine library to calculate distance of monitoringstation from coord
 
-#stations = stationdata.build_station_list(True)
+# stations = stationdata.build_station_list(True)
 #p = (0, 0) # assume monitoring station is at the origin
 
 #stations = stationdata.build_station_list(True)
 #p = (52.2053, 0.1218)
+'''
+for j in stations:
+    list_lines = str(j).splitlines()
+    test = MonitoringStation.__init__(list_lines[0],list_lines[1],list_lines[2],list_lines[3],list_lines[4],list_lines[5],list_lines[6],list_lines[7])
+print(test)
 
+'''
+# TASK 1B
 def stations_by_distance(stations, p):
     station_name = []
     station_coord = []
@@ -57,20 +67,15 @@ def stations_by_distance(stations, p):
     return sorted  # sorting tuple according to distance
 
 
+
+
+# TASK 1C
+'''
+def stations_within_radius(stations, centre, r):
+'''
+
 #print(stations_by_distance(stations, p))
 
-'''
-distances = []
-for coord in coords:
-    distance = haversine((0,0),coord,unit='km')
-
-    distances.append(distance)
-
-#print(distances)
-print(distance)
-print(distances)
-#station_coord.split(',') # splitting
-'''
 #print(station_coord_tuples)
 #import datafetcher
 #from .station import MonitoringStation
@@ -80,3 +85,16 @@ print(distances)
 #print(list_station)
 
 #stations = stationdata.build_station_list()
+'''
+
+distances = []
+for coord in coords:
+distance = haversine((0,0),coord,unit='km')
+
+distances.append(distance)
+
+#print(distances)
+print(distance)
+print(distances)
+#station_coord.split(',') # splitting
+'''
