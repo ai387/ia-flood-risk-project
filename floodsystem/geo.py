@@ -27,6 +27,7 @@ for j in stations:
 print(test)
 
 '''
+
 # TASK 1B
 def stations_by_distance(stations, p):
     station_name = []
@@ -57,10 +58,10 @@ def stations_by_distance(stations, p):
         c = tuple(float(x) for x in i)
         station_coord2.append(c)
 
-    # using pythagoras to find distance (because haversine function had issues (see attempts below)
+    # using haversine function to find distance (using unit = km)
     distances_list = []
-    for a, b in station_coord2:
-        distance = sqrt((a-p[0]) ** 2 + (b-p[1]) ** 2)
+    for coord in station_coord2:
+        distance = haversine(p, coord, unit='km')
         distances_list.append(distance)
     station_coord_tuples = list(zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
     sorted = sorted_by_key(station_coord_tuples, 1, reverse=False)
@@ -71,19 +72,19 @@ def stations_by_distance(stations, p):
 
 # TASK 1C
 
-def stations_within_radius(stations, centre, r):
-
-
 '''
 2.1.3. Task 1C: stations within radius
 
-In the submodule geo implement a function that returns a list of all stations (type MonitoringStation) within radius r of a geographic coordinate x. The required function signature is:
+In the submodule geo implement a function that returns a list of all stations (type MonitoringStation) within
+radius r of a geographic coordinate x. The required function signature is:
 
 def stations_within_radius(stations, centre, r):
 where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.
 Demonstration program
 
-Provide a program file Task1C.py that uses the function geo.stations_within_radius to build a list of stations within 10 km of the Cambridge city centre (coordinate (52.2053, 0.1218)). Print the names of the stations, listed in alphabetical order. Representative output:
+Provide a program file Task1C.py that uses the function geo.stations_within_radius to build a list of stations
+within 10 km of the Cambridge city centre (coordinate (52.2053, 0.1218)). Print the names of the stations, listed
+in alphabetical order. Representative output:
 
 ['Bin Brook', 'Cambridge Baits Bite', "Cambridge Byron's Pool",
  'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
@@ -91,7 +92,42 @@ Provide a program file Task1C.py that uses the function geo.stations_within_radi
 
 '''
 
+def stations_within_radius(stations, centre, r):
+    station_name = []
+    station_coord = []
+    for each_station in stations:
+        list_lines = str(
+            each_station).splitlines()  # splitting data in a list, each component = each line of station info
+        counter = 0  # initialising counter to count each line of station info
+        for each_line in list_lines:
+            counter += 1  # adding one to counter for each line of station info e.g. 1 is Station name, 2 is id etc...
+            items = each_line.split(': ')  # splitting each line into a list (e.g. [Station name, Bourton Dickler])
+            items = items[1::2]  # removing list descriptor e.g. removing Station name
+            if counter == 1:  # if the item is the first in the list it is a station name
+                items = str(items)[6:-2]  # getting rid of white spaces etc
+                station_name.append(items)
+            if counter == 4:  # if the item is the fourth in the list it is the station coordinates
+                items = str(items)[5:-2]  # getting rid of white spaces etc
+                station_coord.append(items)
 
+    # turning coordinates from string in list into tuples with float numbers
+    station_coord2 = []
+    for i in station_coord:
+        i = i.strip('()')
+        i = i.split(',')
+        c = tuple(float(x) for x in i)
+        station_coord2.append(c)
+
+    # using haversine function to find distance between centre and coord (using unit = km)
+    distances_list = []
+    counter = 0
+    for coord in station_coord2:
+        distance = haversine(centre, coord, unit='km')
+        if distance > r:
+            station_name.pop(counter)
+        counter =+ 1
+
+    return sorted_station_name  # sorting list alphabetically
 
 
 
@@ -109,11 +145,9 @@ Provide a program file Task1C.py that uses the function geo.stations_within_radi
 #stations = stationdata.build_station_list()
 
 '''
-
 distances = []
 for coord in coords:
-distance = haversine((0,0),coord,unit='km')
-
+distance = haversine((0,0), coord, unit='km')
 distances.append(distance)
 
 #print(distances)
