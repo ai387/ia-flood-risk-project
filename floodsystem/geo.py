@@ -1,17 +1,17 @@
 # Copyright (C) 2018 Garth N. Wells
 #
-# SPDX-License-Identifier: MIT
+#SPDX-License-Identifier: MIT
 """This module contains a collection of functions related to
 geographical data.
 
 """
 from math import sqrt
-from utils import sorted_by_key # noqa
-import station as st # importing the classes that are made in submodule
-import stationdata
-from stationdata import build_station_list # importing all data abt the stations
-import datafetcher
-from station import MonitoringStation
+from .utils import sorted_by_key # noqa
+from .station import MonitoringStation # importing the classes that are made in submodule
+#import stationdata
+from .stationdata import build_station_list # importing all data abt the stations
+#import datafetcher
+#from .station import MonitoringStation
 
 from haversine import haversine, Unit # importing haversine library to calculate distance of monitoringstation from coord
 
@@ -107,7 +107,7 @@ def stations_within_radius(stations, centre, r):
         c = tuple(float(x) for x in i)
         station_coord2.append(c)
 
-    # using haversine function to find distance between centre and coord (using unit = km)
+    #using haversine function to find distance between centre and coord (using unit = km)
     counter = 0
     for coord in station_coord2:
         distance = haversine(centre, coord, unit='km')
@@ -117,6 +117,10 @@ def stations_within_radius(stations, centre, r):
     sorted_station_name = sorted(station_name) # sorting list alphabetically
     return sorted_station_name
 
+# Task 1D
+
+def rivers_with_station(station):
+    station_names = set()
 
 
 
