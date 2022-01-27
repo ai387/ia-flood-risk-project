@@ -82,8 +82,7 @@ def stations_within_radius(stations, centre, r):
     station_name = []
     station_coord = []
     for each_station in stations:
-        list_lines = str(
-            each_station).splitlines()  # splitting data in a list, each component = each line of station info
+        list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
         counter = 0  # initialising counter to count each line of station info
         for each_line in list_lines:
             counter += 1  # adding one to counter for each line of station info e.g. 1 is Station name, 2 is id etc...
@@ -95,7 +94,7 @@ def stations_within_radius(stations, centre, r):
             if counter == 4:  # if the item is the fourth in the list it is the station coordinates
                 items = str(items)[5:-2]  # getting rid of white spaces etc
                 station_coord.append(items)
-
+    
     # turning coordinates from string in list into tuples with float numbers
     station_coord2 = []
     for i in station_coord:
@@ -107,12 +106,13 @@ def stations_within_radius(stations, centre, r):
     #using haversine function to find distance between centre and coord (using unit = km)
     counter = 0
     for coord in station_coord2:
-        distance = haversine(centre, coord, unit='km')
+        distance = haversine(centre, coord, unit=Unit.KILOMETERS)
         if distance > r:
             station_name.pop(counter)
         counter =+ 1
     sorted_station_name = sorted(station_name) # sorting list alphabetically
     return sorted_station_name
+    #return station_coord2
 
 # Task 1D
 
