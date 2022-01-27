@@ -112,7 +112,6 @@ def stations_within_radius(stations, centre, r):
         counter =+ 1
     sorted_station_name = sorted(station_name) # sorting list alphabetically
     return sorted_station_name
-    #return station_coord2
 
 # Task 1D
 
