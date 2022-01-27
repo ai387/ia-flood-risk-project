@@ -68,7 +68,7 @@ def stations_by_distance(stations, p):
         distance = haversine(p, coord, unit='km')
         distances_list.append(distance)
     station_coord_tuples = list(zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
-    sorted = sorted_by_key(station_coord_tuples, 1, reverse=False)
+    sorted = sorted_by_key(station_coord_tuples, 2, reverse=False) # the distance is the thrid entry in the tuple, therefore, the number entried should be '2' instead of '1'
     return sorted  # sorting tuple according to distance
 
 

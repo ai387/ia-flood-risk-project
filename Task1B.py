@@ -11,6 +11,7 @@ def run():
     stations = build_station_list()
     p = (52.2053, 0.1218)
     output = stations_by_distance(stations, p)
+    #print(output)
     print("The 10 cloest stations from Cambridge: {}".format(output[:10]))
     print("The 10 furthest stations from Cambridge: {}".format(output[-10:]))
 
