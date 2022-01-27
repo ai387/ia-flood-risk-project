@@ -6,9 +6,14 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_by_distance
 #import stationdata
 #stations = stationdata.build_station_list(True)
-stations = build_station_list()
-p = (52.2053, 0.1218)
-print(stations_by_distance(stations, p))
+def run():
+    stations = build_station_list()
+    p = (52.2053, 0.1218)
+    print(stations_by_distance(stations, p))
+
+if __name__ == "__main__":
+    print("*** Task 1B: CUED Part IA Flood Warning System ***")
+    run()
 
 
 # NEED TO CHANGE CODE SO THAT IT ONLY PRINTS 10 CLOSEST AND 10 FURTHEST
