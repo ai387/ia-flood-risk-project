@@ -95,6 +95,7 @@ def stations_within_radius(stations, centre, r):
             if counter == 4:  # if the item is the fourth in the list it is the station coordinates
                 items = str(items)[5:-2]  # getting rid of white spaces etc
                 station_coord.append(items)
+
     # turning coordinates from string in list into tuples with float numbers
     station_coord2 = []
     for i in station_coord:
