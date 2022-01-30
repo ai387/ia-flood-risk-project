@@ -6,6 +6,7 @@ geographical data.
 
 """
 from math import sqrt
+from tokenize import Number
 from .utils import sorted_by_key # noqa
 from .station import MonitoringStation # importing the classes that are made in submodule
 from .stationdata import build_station_list # importing all data abt the stations
@@ -104,14 +105,21 @@ def stations_within_radius(stations, centre, r):
         station_coord2.append(c)
 
     #using haversine function to find distance between centre and coord (using unit = km)
-    counter = 0
     for coord in station_coord2:
+        counter = 0
         distance = haversine(centre, coord, unit=Unit.KILOMETERS)
-        if distance > r:
-            station_name.pop(counter)
-        counter =+ 1
-    sorted_station_name = sorted(station_name) # sorting list alphabetically
-    return sorted_station_name
+        output_n = []
+        output_d = []
+        if distance < r:
+            #station_name.pop(counter)
+            output_n.append(station_name[counter])
+            output_d.append(distance)
+            counter =+ 1
+        else: 
+            counter =+ 1
+    station_ouput = list(zip(output_n,output_d))
+    #sorted_station_name = sorted(output) # sorting list alphabetically
+    return station_ouput
 
 # Task 1D
 
