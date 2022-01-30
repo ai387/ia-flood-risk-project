@@ -95,7 +95,6 @@ def stations_within_radius(stations, centre, r):
             if counter == 4:  # if the item is the fourth in the list it is the station coordinates
                 items = str(items)[5:-2]  # getting rid of white spaces etc
                 station_coord.append(items)
-    
     # turning coordinates from string in list into tuples with float numbers
     station_coord2 = []
     for i in station_coord:
@@ -112,7 +111,7 @@ def stations_within_radius(stations, centre, r):
         if distance < r:
             #station_name.pop(counter)
             station_list.append(station_name[Num])
-            Num =+ 1
+            Num += 1
     sorted_station_name = sorted(station_list) # sorting list alphabetically
     return sorted_station_name
 
