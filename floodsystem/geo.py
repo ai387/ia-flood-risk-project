@@ -118,9 +118,20 @@ def stations_within_radius(stations, centre, r):
 
 # Task 1D
 
-def rivers_with_station(station):
-    station_names = set()
-
-
-
-
+def rivers_with_station(stations):
+    station_name = []
+    river_list = []
+    for each_station in stations:
+        list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
+        counter = 0  # initialising counter to count each line of station info
+        for each_line in list_lines:
+            counter += 1  # adding one to counter for each line of station info e.g. 1 is Station name, 2 is id etc...
+            items = each_line.split(': ')  # splitting each line into a list (e.g. [Station name, Bourton Dickler])
+            items = items[1::2]  # removing list descriptor e.g. removing Station name
+            if counter == 1:  # if the item is the first in the list it is a station name
+                items = str(items)[6:-2]  # getting rid of white spaces etc
+                station_name.append(items)
+            if counter == 6:
+                items = str(items)[10:-2]
+                river_list.append(items)
+    return station_name, river_list
