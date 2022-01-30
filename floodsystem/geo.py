@@ -105,13 +105,15 @@ def stations_within_radius(stations, centre, r):
         station_coord2.append(c)
 
     #using haversine function to find distance between centre and coord (using unit = km)
-    counter = 0
+    Num = 0
+    station_list = []
     for coord in station_coord2:
         distance = haversine(centre, coord, unit='km')
-        if distance > r:
-            station_name.pop(counter)
-            counter =+ 1
-    sorted_station_name = sorted(station_name) # sorting list alphabetically
+        if distance < r:
+            #station_name.pop(counter)
+            station_list.append(station_name[Num])
+            Num =+ 1
+    sorted_station_name = sorted(station_list) # sorting list alphabetically
     return sorted_station_name
 
 # Task 1D
