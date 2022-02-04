@@ -31,8 +31,6 @@ from haversine import haversine, Unit # importing haversine library to calculate
 #stations = stationdata.build_station_list()
 
 
-
-
 # TASK 1B
 def stations_by_distance(stations, p):
     station_name = []
@@ -46,7 +44,6 @@ def stations_by_distance(stations, p):
         station_town.append(each_station.town)
 
     # using haversine function to find distance (using unit = km)
-
     for coord in station_coord:
         distance = haversine(p, coord, unit='km')
         distances_list.append(distance)
@@ -86,15 +83,32 @@ def stations_by_distance(stations, p):
 
 
 
-
-
-
-
-
 # TASK 1C
+'''
+In the submodule geo implement a function that returns a list of all stations (type MonitoringStation) within 
+radius r of a geographic coordinate x. The required function signature is:
+def stations_within_radius(stations, centre, r):
+where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.
+'''
 def stations_within_radius(stations, centre, r):
     station_name = []
     station_coord = []
+    for each_station in stations:
+        station_name.append(each_station.name)
+        station_coord.append(each_station.coord)
+
+    # using haversine function to find distance between centre and coord (using unit = km)
+    Num = 0
+    station_list = []
+    for coord in station_coord:
+        distance = haversine(centre, coord, unit='km')
+        if distance < r:
+            # station_name.pop(counter)
+            station_list.append(station_name[Num])
+            Num += 1
+    sorted_station_name = sorted(station_list)  # sorting list alphabetically
+    return sorted_station_name
+    '''
     for each_station in stations:
         list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
         counter = 0  # initialising counter to count each line of station info
@@ -117,17 +131,8 @@ def stations_within_radius(stations, centre, r):
         c = tuple(float(x) for x in i)
         station_coord2.append(c)
 
-    #using haversine function to find distance between centre and coord (using unit = km)
-    Num = 0
-    station_list = []
-    for coord in station_coord2:
-        distance = haversine(centre, coord, unit='km')
-        if distance < r:
-            #station_name.pop(counter)
-            station_list.append(station_name[Num])
-            Num += 1
-    sorted_station_name = sorted(station_list) # sorting list alphabetically
-    return sorted_station_name
+    '''
+
 
 # Task 1D
 

@@ -5,12 +5,22 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 
+from floodsystem.stationdata import build_station_list
+from floodsystem.geo import stations_within_radius
+
 def run():
     stations = build_station_list()
     centre = (52.2053, 0.1218)
     r = 10
-    print(stations_within_radius(stations, centre, r))
+    stations_in_radius = stations_within_radius(stations, centre, r)
+    print(stations_in_radius)
 
 if __name__ == "__main__":
     print("*** Task 1C: CUED Part IA Flood Warning System ***")
     run()
+
+
+
+#    names = sorted(map(lambda station: station.name, stations_in_radius))
+
+#    print(names)
