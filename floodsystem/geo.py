@@ -165,7 +165,22 @@ def rivers_with_station(stations):
     return sorted(river_with_station_list)
 
 def stations_by_river(stations):
+    dictionary = {} # creating empty dictionary
+    # station_names = []
+    for each_station in stations:
+        river_name = each_station.river
+        if each_station.river not in dictionary.keys():
+            dictionary[each_station.river] = []
+        #station_names.append(each_station.name)
+        #dictionary[river_name] = station_names # adding term to dictionary
+        #dictionary[river_name].append(station_name)  # adding term to key
+        dictionary[river_name].append(each_station) # adding term to dictionary
+    return dictionary
 
+    '''
+    if each_station.river not in dictionary.keys():
+    dictionary[each_station.river] = []
+    '''
 
 # Task 1E
 
