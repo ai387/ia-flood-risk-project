@@ -145,23 +145,31 @@ Tip
 Consider returning a Python set object. A set contains only unique elements. This is useful for building a collection 
 of river names since a set will never contain duplicate entries, no matter how many times a river name is added. A 
 brief example of using a set is available here.
+
+
 In the submodule geo implement a function that returns a Python dict (dictionary) that maps river names (the ‘key’) to 
 a list of station objects on a given river. The function should have the signature:
 def stations_by_river(stations):
 where stations is a list of MonitoringStation objects.
 '''
 
-def rivers_with_station(station):
+def rivers_with_station(stations):
     river_with_station_list = []
-    for station in stations:
-        river_name = station.river # finding name of river from station
+    for each_station in stations:
+        river_name = each_station.river # finding name of river from station
 
+    # the 'not in' function checks whether the specified river_name is an element of the list
+        if river_name not in river_with_station_list:
+            river_with_station_list.append(river_name)
 
+    return sorted(river_with_station_list)
+
+def stations_by_river(stations):
 
 
 # Task 1E
 
-def rivers_by_station_number(stations, N):
+#def rivers_by_station_number(stations, N):
     '''
     Implement a function in geo that determines the N rivers with the greatest number of monitoring stations. It should
     return a list of (river name, number of stations) tuples, sorted by the number of stations. In the case that there are
