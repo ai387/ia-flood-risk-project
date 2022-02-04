@@ -38,6 +38,26 @@ def stations_by_distance(stations, p):
     station_name = []
     station_coord = []
     station_town = []
+    distances_list = []
+
+    for each_station in stations:
+        station_name.append(each_station.name)
+        station_coord.append(each_station.coord)
+        station_town.append(each_station.town)
+
+    # using haversine function to find distance (using unit = km)
+
+    for coord in station_coord:
+        distance = haversine(p, coord, unit='km')
+        distances_list.append(distance)
+    station_coord_tuples = list(
+        zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
+    sorted = sorted_by_key(station_coord_tuples, 2,
+                           reverse=False)  # the distance is the thrid entry in the tuple, therefore, the number entried should be '2' instead of '1'
+
+    return sorted  # sorting tuple according to distance
+
+    '''        
     for each_station in stations:
         list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
         counter=0 # initialising counter to count each line of station info
@@ -62,15 +82,8 @@ def stations_by_distance(stations, p):
         i = i.split(',')
         c = tuple(float(x) for x in i)
         station_coord2.append(c)
+    '''
 
-    # using haversine function to find distance (using unit = km)
-    distances_list = []
-    for coord in station_coord2:
-        distance = haversine(p, coord, unit='km')
-        distances_list.append(distance)
-    station_coord_tuples = list(zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
-    sorted = sorted_by_key(station_coord_tuples, 2, reverse=False) # the distance is the thrid entry in the tuple, therefore, the number entried should be '2' instead of '1'
-    return sorted  # sorting tuple according to distance
 
 
 
@@ -118,9 +131,47 @@ def stations_within_radius(stations, centre, r):
 
 # Task 1D
 
+'''
+In the submodule geo develop a function that, given a list of station objects, returns a container (list/tuple/set) 
+with the names of the rivers with a monitoring station. The function should have the signature:
+def rivers_with_station(stations):
+where stations is a list of MonitoringStation objects. The returned container should not contain duplicate entries.
+Tip
+Consider returning a Python set object. A set contains only unique elements. This is useful for building a collection 
+of river names since a set will never contain duplicate entries, no matter how many times a river name is added. A 
+brief example of using a set is available here.
+In the submodule geo implement a function that returns a Python dict (dictionary) that maps river names (the ‘key’) to 
+a list of station objects on a given river. The function should have the signature:
+def stations_by_river(stations):
+where stations is a list of MonitoringStation objects.
+'''
+
 def rivers_with_station(station):
-    station_names = set()
+    river_with_station_list = []
+    for station in stations:
+        river_name = station.river # finding name of river from station
 
 
 
 
+# Task 1E
+
+def rivers_by_station_number(stations, N):
+    '''
+    Implement a function in geo that determines the N rivers with the greatest number of monitoring stations. It should
+    return a list of (river name, number of stations) tuples, sorted by the number of stations. In the case that there are
+    more rivers with the same number of stations as the N th entry, include these rivers in the list. The function should
+    have the signature:
+
+    def rivers_by_station_number(stations, N):
+    where stations is a list of MonitoringStation objects.
+    Demonstration program
+
+    Provide a program file Task1E.py that prints the list of (river, number stations) tuples when N = 9. Representative
+    result is:
+
+    [('Thames', 55), ('River Great Ouse', 31), ('River Avon', 30), ('River Calder', 24), ('River Aire', 21),
+    ('River Severn', 20), ('River Derwent', 18), ('River Stour', 16), ('River Wharfe', 14), ('River Trent', 14),
+    ('Witham', 14)]
+    The above list has more then 9 entries since a number of rivers have 14 stations.
+    '''
