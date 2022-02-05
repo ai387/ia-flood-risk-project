@@ -1,19 +1,13 @@
-# ARZINA: RUNNING THIS CODE IN GEO GIVES YOU A DIFFERENT OUTPUT TO WHAT IS EXPECTED (ON THE TASK IT GIVES EXAMPLE OUTPUT,
+# ARZINA: FOR THE FIRST PART OF THIS TASK, YOU DON'T GET THE SAME OUTPUT AS THE EXAMPLE OUTPUT,
 # ARZINA: BUT MY OUTPUT IS NOT THE SAME'
 
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 
-
-# writing a function that finds all the stations belonging to a given 'river_name', which is in a given 'dictionary'
-def stations_of_river(dictionary, river_name):
-    stations = dictionary[river_name]
-    list_of_stations = []
-    for each_station in stations:
-        list_of_stations.append(each_station.name)
-    return sorted(list_of_stations)
-
+from floodsystem.geo import stations_of_river
+# stations_of_river is a function we made in geo that finds all the stations belonging to a
+# given 'river_name', which is in a given 'dictionary'
 
 def run():
     stations = build_station_list()

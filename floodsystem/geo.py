@@ -50,7 +50,7 @@ def stations_by_distance(stations, p):
     station_coord_tuples = list(
         zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
     sorted = sorted_by_key(station_coord_tuples, 2,
-                           reverse=False)  # the distance is the thrid entry in the tuple, therefore, the number entried should be '2' instead of '1'
+                           reverse=False)  # the distance is the third entry in the tuple, therefore, the number entried should be '2' instead of '1'
 
     return sorted  # sorting tuple according to distance
 
@@ -169,7 +169,8 @@ def stations_by_river(stations):
     # station_names = []
     for each_station in stations:
         river_name = each_station.river
-        if each_station.river not in dictionary.keys():
+        if each_station.river not in dictionary.keys(): # e.g. 'Burton Dikler' caused an error so if the element is
+            # empty, we state it to be [] in the dictionary
             dictionary[each_station.river] = []
         #station_names.append(each_station.name)
         #dictionary[river_name] = station_names # adding term to dictionary
@@ -177,14 +178,37 @@ def stations_by_river(stations):
         dictionary[river_name].append(each_station) # adding term to dictionary
     return dictionary
 
-    '''
-    if each_station.river not in dictionary.keys():
-    dictionary[each_station.river] = []
-    '''
+
+# writing a function that finds all the stations belonging to a given 'river_name', which is in a given 'dictionary'
+# this is needed for the demonstration programme in 1D
+def stations_of_river(dictionary, river_name):
+    stations = dictionary[river_name]
+    list_of_stations = []
+    for each_station in stations:
+        list_of_stations.append(each_station.name)
+    return sorted(list_of_stations)
+
+
+
+
 
 # Task 1E
+# reusing some programming from task 1D
+def rivers_by_station_number(stations, N):
+   river_names = []
+   no_of_stations = []
+   for each_river in stations,
+      if each_river.river not in river_names:
+          river_names.append(each_river.river)
 
-#def rivers_by_station_number(stations, N):
+
+    #output = stations_by_river(stations) # a dictionary
+    #for each_station in stations:
+    #    stations_of_river(output, each_station.river)
+    dictionary = {}  # creating empty dictionary with key = river_name ( = each_station.river)
+    # river_name = [] # initialising an empty list for river names
+    # no_of_stations = [] # initialising an empty list for number of stations on each river
+
     '''
     Implement a function in geo that determines the N rivers with the greatest number of monitoring stations. It should
     return a list of (river name, number of stations) tuples, sorted by the number of stations. In the case that there are
@@ -193,13 +217,4 @@ def stations_by_river(stations):
 
     def rivers_by_station_number(stations, N):
     where stations is a list of MonitoringStation objects.
-    Demonstration program
-
-    Provide a program file Task1E.py that prints the list of (river, number stations) tuples when N = 9. Representative
-    result is:
-
-    [('Thames', 55), ('River Great Ouse', 31), ('River Avon', 30), ('River Calder', 24), ('River Aire', 21),
-    ('River Severn', 20), ('River Derwent', 18), ('River Stour', 16), ('River Wharfe', 14), ('River Trent', 14),
-    ('Witham', 14)]
-    The above list has more then 9 entries since a number of rivers have 14 stations.
     '''
