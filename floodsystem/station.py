@@ -50,3 +50,9 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
+def inconsistent_typical_range_stations(stations):
+    inconsistent_stations = []
+    for each_station in stations:
+        if MonitoringStation.typical_range_consistent(each_station) == False:
+            inconsistent_stations.append(each_station.name)
+    return inconsistent_stations
