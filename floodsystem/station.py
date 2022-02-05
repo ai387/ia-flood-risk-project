@@ -29,17 +29,6 @@ class MonitoringStation:
 
         self.latest_level = None
 
-    def typical_range_consistent(self):
-        running = True
-        if type(self.typical_range) != int or type(self.typical_range) != float:
-            running = False
-        else:
-            if self.typical_range[0] < self.typical_range[1]:
-                running = False
-            else:
-                running = True
-        return running
-
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
         d += "   id:            {}\n".format(self.station_id)
@@ -49,6 +38,19 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+
+    def typical_range_consistent(self):
+        running = True
+        if self.typical_range == None:
+            running = False
+        else:
+            if self.typical_range[0] > self.typical_range[1]:
+                running = False
+            else:
+                running = True
+        return running
+
+
 
 def inconsistent_typical_range_stations(stations):
     inconsistent_stations = []
