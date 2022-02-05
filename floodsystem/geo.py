@@ -228,22 +228,9 @@ def rivers_by_station_number(stations, N):
     return sorted
 
 '''
-    stations_per_river = []
-    rivers = rivers_with_station(stations)
-
-    for river in rivers:
-        nr = 0
-        for station in stations:
-            if station.river == river:
-                nr+=1
-        
-        stations_per_river.append((river, nr))
-    
-    result = sorted_by_key(stations_per_river, 1, True)
-
+# enumerate() allows us to iterate through a sequence but it keeps track of both the index and the element
     for [index, station] in enumerate(result[N:]):
         if result[N-1][1] != station[1]:
             return result[:N+index]
-
     return result
 '''
