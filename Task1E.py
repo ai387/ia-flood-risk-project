@@ -1,3 +1,7 @@
+# i get an incorrect output for 1E (it's mostly there but if you run it, you will see that some stations = 0,
+# and we want to remove these from the output, but idk how)
+
+
 '''
 Demonstration program
 
@@ -23,7 +27,4 @@ if __name__ == "__main__":
     run()
 
 
-from floodsystem.geo import rivers_by_station_number
 from floodsystem import stationdata
-
-stations = stationdata.build_station_list()
