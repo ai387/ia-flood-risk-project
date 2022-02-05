@@ -40,4 +40,18 @@ class MonitoringStation:
         return d
 
 
+'''
+def typical_range_consistent(self):
+    
+
+for each_station
+    running = True
+if running = Tru:
+    check consistent,
+    if it is consistent
+        running = True
+    if it is not consistent or doesn't exist'
+        running = False
+
+'''
 

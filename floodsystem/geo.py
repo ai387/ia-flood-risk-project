@@ -181,7 +181,6 @@ def stations_by_river(stations):
 
 
 
-
 # Task 1E
     '''
     Implement a function in geo that determines the N rivers with the greatest number of monitoring stations. It should
@@ -211,64 +210,34 @@ def rivers_by_station_number(stations, N):
     # in the rest of the function we iterate through list of stations and +1 for each station that a river has
 
     for each_station in stations:
+        if each_station.river in dictionary:
+            dictionary[each_station.river] =+ 1
 
-    '''
-    index = 0
-    for each_river in list_of_rivers:
-        for each_station in stations:
-            if each_station.river = list_of_rivers[index]
-            num_stations[index] += 1
-        index += 1
-   '''
-   ''' 
-    for each_river in list_of_rivers:
-        num = 0
-        for i in stations:
-            if each_river == i.river:
-                num =+ 1
-        num_stations.append(num)
-    dictionary[]
-    index = 0
-    for each_num in num_stations:
-        if each_num <= N:
-            
-
-    station_number_tuple = list(
-        zip(list_of_rivers, num_stations))  # making a list of tuples for each name and coord
-
-    return(station_number_tuple)
-
-    '''
-
-    '''
-    dictionary = {}  # creating empty dictionary
-    num = 0
-    for each_station in stations:
-        river_name = each_station.river
-        if each_station.river not in dictionary.keys():  # e.g. 'Burton Dikler' caused an error so if the element is
-            # empty, we state it to be [] in the dictionary
-            dictionary[each_station.river] = []
-        dictionary[river_name] = ''
-    num = 0
-    for each_river_name in dictionary:
-        dictionary[]
+    for name, number in dictionary
+        if
+    return dictionary
 
 
-            dictionary[river_name] = num
-        #dictionary[river_name].append(each_station)  # adding term to dictionary
+'''
+    """Returns a tuple of the N rivers with the greatest number of monitoring stations.
+    (river: string, count: int)
+    """
+    stations_per_river = []
+    rivers = rivers_with_station(stations)
 
-    def stations_of_river(dictionary, river_name):
-        dict = dictionary[river_name]
-        list_of_stations = []
-        for each_station in dict:
-            list_of_stations.append(each_station.name)
-        return sorted(list_of_stations)
+    for river in rivers:
+        nr = 0
+        for station in stations:
+            if station.river == river:
+                nr+=1
+        
+        stations_per_river.append((river, nr))
+    
+    result = sorted_by_key(stations_per_river, 1, True)
 
-    #output = stations_by_river(stations) # a dictionary
-    #for each_station in stations:
-    #    stations_of_river(output, each_station.river)
-    dictionary = {}  # creating empty dictionary with key = river_name ( = each_station.river)
-    # river_name = [] # initialising an empty list for river names
-    # no_of_stations = [] # initialising an empty list for number of stations on each river
-    '''
+    for [index, station] in enumerate(result[N:]):
+        if result[N-1][1] != station[1]:
+            return result[:N+index]
 
+    return result
+'''
