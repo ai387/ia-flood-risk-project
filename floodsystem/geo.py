@@ -193,30 +193,43 @@ def stations_by_river(stations):
     where stations is a list of MonitoringStation objects.
     '''
 
+# have lists
 # make dictionary
-# split it into lists
+# sort by increasing num of stations
 # zip it into tuples
 
 
 # reusing the function from task 1D
 def rivers_by_station_number(stations, N):
-    list_of_rivers = rivers_with_station(stations) # making alphabetical list of rivers which have a stations
-    num_stations = []
+    dictionary = {}
+    list_of_rivers = rivers_with_station(stations) # making alphabetical list of rivers which have a station
+    num_stations = [0] * len(list_of_rivers)
+
+    index = 0
+    for each_river in list_of_rivers:
+        for each_station in stations:
+            if each_station.river = list_of_rivers[index]
+            num_stations[index] += 1
+        index += 1
+   ''' 
     for each_river in list_of_rivers:
         num = 0
         for i in stations:
             if each_river == i.river:
                 num =+ 1
         num_stations.append(num)
-
+    dictionary[]
     index = 0
-    for each_river in
+    for each_num in num_stations:
+        if each_num <= N:
+            
 
     station_number_tuple = list(
         zip(list_of_rivers, num_stations))  # making a list of tuples for each name and coord
 
     return(station_number_tuple)
 
+    '''
 
     '''
     dictionary = {}  # creating empty dictionary
