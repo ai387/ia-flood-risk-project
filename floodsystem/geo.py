@@ -215,6 +215,8 @@ def rivers_by_station_number(stations, N):
     num_stations = [0] * len(list_of_rivers)
 
     index = 0
+    new_river_list = []
+    new_station_count = []
     for each_river in list_of_rivers:
         # dictionary[each_river] = 0 # at the start of function, assuming each river has 0 stations
     # in the rest of the function we iterate through list of stations and +1 for each station that a river has
@@ -224,16 +226,16 @@ def rivers_by_station_number(stations, N):
                 num += 1
         num_stations[index] = num
 
-        if num < N:
-            list_of_rivers.pop(index)
-            num_stations.pop(index)
+        if num > N:
+            new_river_list.append(each_river)
+            new_station_count.append(num)
 
         index += 1
 
 # ERROR CHECK - write error if no.stations ends up being too large
 
     river_station_tuples = list(
-        zip(list_of_rivers, num_stations))  # making a list of tuples for each river and number of stations
+        zip(new_river_list, new_station_count))  # making a list of tuples for each river and number of stations
     sorted = sorted_by_key(river_station_tuples, 1, reverse=True)
 
     return sorted
