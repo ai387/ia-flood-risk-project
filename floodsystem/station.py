@@ -41,10 +41,10 @@ class MonitoringStation:
 
     def typical_range_consistent(self):
         running = True
-        if self.typical_range == None:
+        if self.typical_range == None:  #This is to identify the terms with no data
             running = False
         else:
-            if self.typical_range[0] > self.typical_range[1]:
+            if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with High range < low range
                 running = False
             else:
                 running = True
@@ -55,6 +55,6 @@ class MonitoringStation:
 def inconsistent_typical_range_stations(stations):
     inconsistent_stations = []
     for each_station in stations:
-        if MonitoringStation.typical_range_consistent(each_station) == False:
+        if MonitoringStation.typical_range_consistent(each_station) == False: # Pick up all the terms with False output
             inconsistent_stations.append(each_station.name)
     return inconsistent_stations
