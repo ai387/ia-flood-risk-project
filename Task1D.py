@@ -5,9 +5,21 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 
-from floodsystem.geo import stations_of_river
+#from floodsystem.geo import stations_of_river
 # stations_of_river is a function we made in geo that finds all the stations belonging to a
 # given 'river_name', which is in a given 'dictionary'
+
+
+# writing a function that finds all the stations belonging to a given 'river_name', which is in a given 'dictionary'
+# this is needed for the demonstration programme in 1D
+def stations_of_river(dictionary, river_name):
+    stations = dictionary[river_name]
+    list_of_stations = []
+    for each_station in stations:
+        list_of_stations.append(each_station.name)
+    return sorted(list_of_stations)
+
+
 
 def run():
     stations = build_station_list()
