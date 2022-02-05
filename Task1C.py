@@ -24,3 +24,9 @@ if __name__ == "__main__":
 #    names = sorted(map(lambda station: station.name, stations_in_radius))
 
 #    print(names)
+
+
+
+#    names = sorted(map(lambda station: station.name, stations_in_radius))
+
+#    print(names)
