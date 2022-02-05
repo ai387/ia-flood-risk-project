@@ -193,31 +193,49 @@ def stations_by_river(stations):
     '''
 
 # have lists
-# make dictionary
 # sort by increasing num of stations
 # zip it into tuples
-
 
 
 def rivers_by_station_number(stations, N):
     dictionary = {}
     # reusing the function from task 1D – making alphabetical list of rivers which have a station
     list_of_rivers = rivers_with_station(stations)
-    # num_stations = [0] * len(list_of_rivers)
+    num_stations = [0] * len(list_of_rivers)
 
     for each_river in list_of_rivers:
-        dictionary[each_river] = 0 # at the start of function, assuming each river has 0 stations
+        # dictionary[each_river] = 0 # at the start of function, assuming each river has 0 stations
     # in the rest of the function we iterate through list of stations and +1 for each station that a river has
+        index = 0
+        for each_station in stations:
+            if each_station.river == each_river:
+                num_stations[index] =+ 1
+        index += 1
 
-    for each_station in stations:
-        if each_station.river in dictionary:
-            dictionary[each_station.river] =+ 1
+    index2 = 0
+    for i in num_stations:
+        if i < N:
+            list_of_rivers.pop(index2)
+            num_stations.pop(index2)
+        index2 =+ 1
 
-    for name, number in dictionary
-        if
-    return dictionary
+    river_station_tuples = list(
+        zip(list_of_rivers, num_stations))  # making a list of tuples for each river and number of stations
+    sorted = sorted_by_key(river_station_tuples, 1, reverse=True)
 
 
+
+    return sorted
+
+
+    '''
+    station_coord_tuples = list(
+        zip(station_name, station_town, distances_list))  # making a list of tuples for each name and coord
+    sorted = sorted_by_key(station_coord_tuples, 2,
+                           reverse=False)  # the distance is the third entry in the tuple, therefore, the number entried should be '2' instead of '1'
+
+    return sorted  # sorting tuple according to distance
+    '''
 '''
     """Returns a tuple of the N rivers with the greatest number of monitoring stations.
     (river: string, count: int)

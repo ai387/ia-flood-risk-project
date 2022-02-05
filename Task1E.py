@@ -10,6 +10,18 @@ Representative result is:
 The above list has more then 9 entries since a number of rivers have 14 stations.
 '''
 
+from floodsystem.stationdata import build_station_list
+from floodsystem.geo import rivers_by_station_number
+
+def run():
+    stations = build_station_list()
+    output = rivers_by_station_number(stations, 9)
+    print(output)
+
+if __name__ == "__main__":
+    print("*** Task 1E: CUED Part IA Flood Warning System ***")
+    run()
+
 
 from floodsystem.geo import rivers_by_station_number
 from floodsystem import stationdata
