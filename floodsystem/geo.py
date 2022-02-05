@@ -91,7 +91,17 @@ def stations_within_radius(stations, centre, r):
 where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.
 '''
 def stations_within_radius(stations, centre, r):
-    station_name = []
+    station_list = stations_by_distance(stations, centre)
+    within_radius_list = []
+    for station in station_list:
+        if station[2] < r:
+            within_radius_list.append(station[0])
+        else:
+            pass
+    return sorted(within_radius_list)
+
+    '''
+        station_name = []
     station_coord = []
     for each_station in stations:
         station_name.append(each_station.name)
@@ -108,6 +118,8 @@ def stations_within_radius(stations, centre, r):
             Num += 1
     sorted_station_name = sorted(station_list)  # sorting list alphabetically
     return sorted_station_name
+    '''
+
     '''
     for each_station in stations:
         list_lines = str(each_station).splitlines()  # splitting data in a list, each component = each line of station info
@@ -130,7 +142,6 @@ def stations_within_radius(stations, centre, r):
         i = i.split(',')
         c = tuple(float(x) for x in i)
         station_coord2.append(c)
-
     '''
 
 
