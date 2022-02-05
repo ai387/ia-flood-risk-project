@@ -226,7 +226,7 @@ def rivers_by_station_number(stations, N):
                 num += 1
         num_stations[index] = num
 
-        if num > N:
+        if num > (N-1):
             new_river_list.append(each_river)
             new_station_count.append(num)
 
