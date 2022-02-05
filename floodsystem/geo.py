@@ -92,12 +92,15 @@ where stations is a list of MonitoringStation objects, centre is the coordinate 
 '''
 def stations_within_radius(stations, centre, r):
     station_list = stations_by_distance(stations, centre)
+    # make a list of stations with the distance to centre by using 1B function
     within_radius_list = []
     for station in station_list:
         if station[2] < r:
             within_radius_list.append(station[0])
+            # add the station with the distance < r to the new list
         else:
             pass
+            # pass all the other stations
     return sorted(within_radius_list)
 
     '''
@@ -229,6 +232,7 @@ def rivers_by_station_number(stations, N):
         if num > (N-1):
             new_river_list.append(each_river)
             new_station_count.append(num)
+            # add all rivers with the number greater than N into a new list
 
         index += 1
 
