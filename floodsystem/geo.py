@@ -199,18 +199,27 @@ def stations_by_river(stations):
 # zip it into tuples
 
 
-# reusing the function from task 1D
+
 def rivers_by_station_number(stations, N):
     dictionary = {}
-    list_of_rivers = rivers_with_station(stations) # making alphabetical list of rivers which have a station
-    num_stations = [0] * len(list_of_rivers)
+    # reusing the function from task 1D – making alphabetical list of rivers which have a station
+    list_of_rivers = rivers_with_station(stations)
+    # num_stations = [0] * len(list_of_rivers)
 
+    for each_river in list_of_rivers:
+        dictionary[each_river] = 0 # at the start of function, assuming each river has 0 stations
+    # in the rest of the function we iterate through list of stations and +1 for each station that a river has
+
+    for each_station in stations:
+
+    '''
     index = 0
     for each_river in list_of_rivers:
         for each_station in stations:
             if each_station.river = list_of_rivers[index]
             num_stations[index] += 1
         index += 1
+   '''
    ''' 
     for each_river in list_of_rivers:
         num = 0
