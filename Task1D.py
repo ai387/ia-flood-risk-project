@@ -1,5 +1,3 @@
-# ARZINA: FOR THE FIRST PART OF THIS TASK, YOU DON'T GET THE SAME OUTPUT AS THE EXAMPLE OUTPUT,
-# ARZINA: BUT MY OUTPUT IS NOT THE SAME'
 
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_with_station

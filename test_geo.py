@@ -49,4 +49,21 @@ def test_stations_by_river():
     assert type(stations_by_river(stations)) is dict
 
 
+# Task 1E
+def test_rivers_by_station_number():
+    stations = build_station_list()
+    N = 9
+    output = rivers_by_station_number(stations, N)
+    assert len(output) < 100
+    assert type(output) is list
 
+
+# Task 1F
+
+'''
+def run():
+    stations = build_station_list()
+    output = inconsistent_typical_range_stations(stations)
+    output = sorted(output)
+    print(output)
+'''

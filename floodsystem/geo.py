@@ -243,11 +243,3 @@ def rivers_by_station_number(stations, N):
     sorted = sorted_by_key(river_station_tuples, 1, reverse=True)
 
     return sorted
-
-'''
-# enumerate() allows us to iterate through a sequence but it keeps track of both the index and the element
-    for [index, station] in enumerate(result[N:]):
-        if result[N-1][1] != station[1]:
-            return result[:N+index]
-    return result
-'''

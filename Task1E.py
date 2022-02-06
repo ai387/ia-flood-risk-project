@@ -1,6 +1,3 @@
-# i get an incorrect output for 1E (it's mostly there but if you run it, you will see that some stations = 0,
-# and we want to remove these from the output, but idk how)
-
 
 '''
 Demonstration program
