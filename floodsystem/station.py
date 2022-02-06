@@ -40,7 +40,8 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        while running = True:
+        running = True
+        while running:
             if self.typical_range == None:  #This is to identify the terms with no data
                 running = False
             else:
