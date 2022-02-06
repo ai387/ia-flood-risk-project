@@ -40,14 +40,15 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        running = True
-        if self.typical_range == None:  #This is to identify the terms with no data
-            running = False
-        else:
-            if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with High range < low range
+        while running = True:
+            if self.typical_range == None:  #This is to identify the terms with no data
                 running = False
             else:
-                running = True
+                if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with High range < low range
+                    running = False
+                else:
+                    running = True
+
         return running
 
 
