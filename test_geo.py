@@ -56,14 +56,15 @@ def test_rivers_by_station_number():
     output = rivers_by_station_number(stations, N)
     assert len(output) < 100
     assert type(output) is list
+    for river, number in output:
+        assert number >= N
 
 
 # Task 1F
-
-'''
-def run():
+def test_inconsistent_typical_range_stations():
     stations = build_station_list()
     output = inconsistent_typical_range_stations(stations)
-    output = sorted(output)
-    print(output)
+    assert len(output) < 100
+    assert type(output) is list
+
 '''
