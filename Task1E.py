@@ -1,3 +1,6 @@
+from floodsystem.stationdata import build_station_list
+from floodsystem.geo import rivers_by_station_number
+from floodsystem import stationdata
 
 '''
 Demonstration program
@@ -11,9 +14,6 @@ Representative result is:
 The above list has more then 9 entries since a number of rivers have 14 stations.
 '''
 
-from floodsystem.stationdata import build_station_list
-from floodsystem.geo import rivers_by_station_number
-
 def run():
     stations = build_station_list()
     N = 9
@@ -25,4 +25,4 @@ if __name__ == "__main__":
     run()
 
 
-from floodsystem import stationdata
+
