@@ -68,4 +68,3 @@ def test_inconsistent_typical_range_stations():
     assert len(output) < 100
     assert type(output) is list
 
-'''
