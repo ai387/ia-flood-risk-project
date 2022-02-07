@@ -10,6 +10,7 @@ from floodsystem.geo import stations_within_radius
 from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 from floodsystem.geo import rivers_by_station_number
+from floodsystem.station import inconsistent_typical_range_stations
 
 from haversine import haversine, Unit
 
