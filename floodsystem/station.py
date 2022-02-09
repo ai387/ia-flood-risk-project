@@ -41,7 +41,7 @@ class MonitoringStation:
 
     # Task 1F
     def typical_range_consistent(self):
-        if self.typical_range == None:  #This is to identify the terms with no data
+        if self.typical_range is None:  #This is to identify the terms with no data
             running = False
         else:
             if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with High range < low range
@@ -53,10 +53,11 @@ class MonitoringStation:
 
     # Task 2B
     def relative_water_level(self):
-        if self.typical_range == None or self.latest_level == None:  # This is to identify the terms with no data
+        if self.typical_range is None or self.latest_level is None:  # This is to identify the terms with no data
             return None
         else:
-            return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
+            output = float((self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0]))
+            return output
 
 
 
