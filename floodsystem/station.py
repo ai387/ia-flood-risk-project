@@ -39,6 +39,7 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
+    # Task 1F
     def typical_range_consistent(self):
         if self.typical_range == None:  #This is to identify the terms with no data
             running = False
@@ -50,8 +51,17 @@ class MonitoringStation:
 
         return running
 
+    # Task 2B
+    def relative_water_level(self):
+        if self.typical_range == None or self.latest_level == None:  # This is to identify the terms with no data
+            return None
+        else:
+            return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
 
 
+
+
+# Task 1F
 def inconsistent_typical_range_stations(stations):
     inconsistent_stations = []
     for each_station in stations:
