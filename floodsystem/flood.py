@@ -38,7 +38,9 @@ def stations_level_over_threshold(stations, tol):
         zip(station_names, relative_water_level_above_tol))  # making a list of tuples for each name and level
     sorted_list = sorted_by_key(station_level_tuples, 1, reverse=False)
     # water level is the 2nd entry in the tuple, therefore, the number entered 2
-    return sorted_list
+    for a, b in sorted_list:
+        print(a, b)  # iterating through list so that each tuple is printed on a new line
+    return
 
 
 

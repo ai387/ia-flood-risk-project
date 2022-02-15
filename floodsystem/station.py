@@ -44,7 +44,7 @@ class MonitoringStation:
         if self.typical_range is None:  #This is to identify the terms with no data
             running = False
         else:
-            if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with High range < low range
+            if self.typical_range[0] > self.typical_range[1]: #This is to identify the terms with low range > high range
                 running = False
             else:
                 running = True
@@ -53,16 +53,17 @@ class MonitoringStation:
 
     # Task 2B
     def relative_water_level(self):
-        if self.typical_range_consistent() is False or self.typical_range is None or self.latest_level is None:
+        if self.typical_range_consistent() is False or self.latest_level is None:
             # This is to identify the terms with no data
-            # by using attributes self.latest_level , self.typical_range
+            # by using attributes self.latest_level ,
+                # NB 'self.typical_range is None' has already been accomodated in previous function
             # and by using function self.typical_range_consistent()
             return None
         else:
             lat_lev = self.latest_level
-            typ_rang_0 = self.typical_range[0]
-            typ_rang_1 = self.typical_range[1]
-            output = (lat_lev - typ_rang_0) / (typ_rang_1 - typ_rang_0)
+            typ_rang_low = self.typical_range[0]
+            typ_rang_high = self.typical_range[1]
+            output = (lat_lev - typ_rang_low) / (typ_rang_high - typ_rang_low)
             # Returns the ratio of the actual level over the typical range
             return float(output)
 
