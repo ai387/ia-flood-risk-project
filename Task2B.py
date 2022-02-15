@@ -8,7 +8,8 @@ def run():
     update_water_levels(stations)
     tol = 0.8
     output = stations_level_over_threshold(stations, tol)
-    print(output)
+    for a, b in output:
+        print(a, b)  # iterating through list so that each tuple is printed on a new line
 
 if __name__ == "__main__":
     print("*** Task 1E: CUED Part IA Flood Warning System ***")

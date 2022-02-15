@@ -22,7 +22,7 @@ def stations_level_over_threshold(stations, tol):
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 50:
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 50:  # sanity check lol
             rel_water_level = each_station.relative_water_level()
             if rel_water_level > tol:
                 station_names.append(each_station.name)
@@ -35,9 +35,7 @@ def stations_level_over_threshold(stations, tol):
         zip(station_names, relative_water_level_above_tol))  # making a list of tuples for each name and level
     sorted_list = sorted_by_key(station_level_tuples, 1, reverse=True)
     # water level is the 2nd entry in the tuple, therefore, the number entered 2
-    for a, b in sorted_list:
-        print(a, b)  # iterating through list so that each tuple is printed on a new line
-    return
+    return sorted_list
 
 
 
@@ -52,5 +50,12 @@ relative to the typical range, is highest. The list should be sorted in descendi
 - print out the first N terms of the list
 '''
 def stations_highest_rel_level(stations, N):
+    wat_lev_list = []
     for each_station in stations:
-        water_level = each_station.relative_water_level()
+        if each_station.relative_water_level() is None:
+            continue  # if data doesn't exist
+        rel_water_level = each_station.relative_water_level()
+        station_name = each_station.name
+        wat_lev_list.append((station_name, rel_water_level))  # making a list of tuples
+        output = sorted_by_key(wat_lev_list, 1, reverse=True)  # sorting list in descending order
+    return output[:N]  # returning the first N terms
