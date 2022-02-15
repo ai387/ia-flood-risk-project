@@ -9,7 +9,6 @@ Provide a program file Task2E.py that plots the water levels over the past 10 da
 current relative water level is greatest.
 '''
 def run():
-
     # Build list of stations
     stations = build_station_list()
     update_water_levels(stations)
@@ -22,37 +21,6 @@ def run():
                 dates, levels = fetch_measure_levels(
                     station_a.measure_id, dt=timedelta(days=dt))
                 plot_water_levels(a, dates, levels)
-
-'''    
-
-    for station_t in top_stations:
-        station = station_t[0]
-        dates, levels = fetch_measure_levels(station.measure_id, dt=timedelta(days=10))
-        plot_water_levels(station, dates, levels)
-'''
-'''
-    # Check that station could be found. Return if not found.
-    if not station_cam:
-        print("Station {} could not be found".format(station_name))
-        return
-'''
-    # Alternative find station 'Cam' using the Python 'next' function
-    # (https://docs.python.org/3/library/functions.html#next). Raises
-    # an exception if station is not found.
-    # try:
-    #     station_cam = next(s for s in stations if s.name == station_name)
-    # except StopIteration:
-    #     print("Station {} could not be found".format(station_name))
-    #     return
-
-    # Fetch data over past 2 days
-    #dt = 5
-    #dates, levels = fetch_measure_levels(
-    #    station_a.measure_id, dt=datetime.timedelta(days=dt))
-
-    # Print level history
-   # for date, level in zip(dates, levels):
-    #    print(date, level)
 
 
 if __name__ == "__main__":
