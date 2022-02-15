@@ -3,9 +3,6 @@ from floodsystem.flood import stations_level_over_threshold
 from floodsystem import station
 
 
-# GETTING NEGATIVE NUMBERS IN THE OUTPUT
-
-
 def run():
     stations = build_station_list()
     update_water_levels(stations)
