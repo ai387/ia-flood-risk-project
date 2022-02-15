@@ -15,18 +15,13 @@ def run():
     update_water_levels(stations)
     output = stations_highest_rel_level(stations, 5) # 5 stations with greatest current relative water level
     for a, b in output:
-        # Station name to find
-        station_name = a
-
-        # Find station
-        station_a = None
-        for each_station in stations:
-            if each_station.name == station_name:
+        for each_station in stations:         # Find station
+            if each_station.name == a:
                 station_a = each_station
                 dt = 10
                 dates, levels = fetch_measure_levels(
                     station_a.measure_id, dt=timedelta(days=dt))
-                plot_water_levels(station, dates, levels)
+                plot_water_levels(a, dates, levels)
 
 '''    
 
