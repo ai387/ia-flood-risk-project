@@ -1,5 +1,8 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import numpy as np
+from .analysis import polyfit
 
 # Task 2E
 '''Implement in a submodule plot a function that displays a plot (using Matplotlib) of the water level data against
@@ -29,4 +32,29 @@ def plot_water_levels(station, dates, levels):
     # Display plot
     plt.tight_layout()  # This makes sure plot does not cut off date labels
 
+    plt.show()
+
+
+def plot_water_level_with_fit(station, dates, levels, p):
+    dates_coord = []
+    for each_date in dates:
+        dates_float = matplotlib.dates.date2num(each_date)
+        dates_coord.append(dates_float)
+    x = dates_coord
+    '''print(x)'''
+    y = levels
+    d0 = x[-1]
+    p_coeff = np.polyfit(x - d0, y, p)
+    poly = np.poly1d(p_coeff)
+
+    # Plot original data points
+    plt.plot(x, y, '.')
+
+    # Plot polynomial fit at 30 points along interval (note that polynomial
+    # is evaluated using the shift x)
+    x1 = x
+    plt.plot(x1, poly(x1 - d0))
+    plt.title(station)
+
+    # Display plot
     plt.show()
