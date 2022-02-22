@@ -22,7 +22,7 @@ def stations_level_over_threshold(stations, tol):
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 50:  # sanity check lol
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 100:  # sanity check lol
             rel_water_level = each_station.relative_water_level()
             if rel_water_level > tol:
                 station_names.append(each_station.name)
