@@ -16,6 +16,7 @@ poly, d0 = polyfit(dates, levels, 3)
 where poly is a numpy.poly1d object an d0 is any shift of the date (time) axis.
 '''
 
+# Task 2F
 def polyfit(dates, levels, p):
     dates_coord = []
     for each_date in dates:

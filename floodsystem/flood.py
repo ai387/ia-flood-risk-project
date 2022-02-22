@@ -54,8 +54,10 @@ def stations_highest_rel_level(stations, N):
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue  # if data doesn't exist
-        rel_water_level = each_station.relative_water_level()
-        station_name = each_station.name
-        wat_lev_list.append((station_name, rel_water_level))  # making a list of tuples
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 50:  # sanity check lol
+            rel_water_level = each_station.relative_water_level()
+
+            station_name = each_station.name
+            wat_lev_list.append((station_name, rel_water_level))  # making a list of tuples
         output = sorted_by_key(wat_lev_list, 1, reverse=True)  # sorting list in descending order
     return output[:N]  # returning the first N terms
