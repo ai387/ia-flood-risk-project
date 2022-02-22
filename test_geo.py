@@ -5,12 +5,9 @@ from floodsystem.utils import sorted_by_key # noqa
 from floodsystem.station import MonitoringStation # importing the classes that are made in submodule
 from floodsystem.stationdata import build_station_list # importing all data abt the stations
 
-from floodsystem.geo import stations_by_distance
-from floodsystem.geo import stations_within_radius
-from floodsystem.geo import rivers_with_station
-from floodsystem.geo import stations_by_river
-from floodsystem.geo import rivers_by_station_number
-from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.geo import stations_by_distance, stations_within_radius, rivers_with_station
+from floodsystem.geo import stations_by_river, rivers_by_station_number
+
 
 from haversine import haversine, Unit
 
