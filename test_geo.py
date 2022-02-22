@@ -62,10 +62,5 @@ def test_rivers_by_station_number():
         assert number >= N
 
 
-# Task 1F
-def test_inconsistent_typical_range_stations():
-    stations = build_station_list()
-    output = inconsistent_typical_range_stations(stations)
-    assert len(output) < 100
-    assert type(output) is list
+
 
