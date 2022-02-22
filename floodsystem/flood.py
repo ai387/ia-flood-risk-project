@@ -54,7 +54,7 @@ def stations_highest_rel_level(stations, N):
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue  # if data doesn't exist
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 50:  # sanity check lol
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 100:  # sanity check lol
             rel_water_level = each_station.relative_water_level()
 
             station_name = each_station.name
