@@ -24,11 +24,6 @@ def run():
                 '''find the corresponding measure_id for the five stations and plot its graph'''
                 dt = 2
                 dates, levels = fetch_measure_levels(id, dt=datetime.timedelta(days=dt))
-                '''new = []
-                for each_date in dates:
-                    new_coord = matplotlib.dates.date2num(each_date)
-                    new.append(new_coord)
-                print(new)'''
                 plot_water_level_with_fit(each_station, dates, levels, p=4)
 
 
