@@ -20,7 +20,7 @@ def run():
         for station in stations:
             if station.name in [each_station]:
                 id = station.measure_id
-                print(station.name)
+                '''print(station.name)'''
                 '''find the corresponding measure_id for the five stations and plot its graph'''
                 dt = 2
                 dates, levels = fetch_measure_levels(id, dt=datetime.timedelta(days=dt))
