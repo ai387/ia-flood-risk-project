@@ -15,7 +15,7 @@ def run():
     stations = build_station_list()
 
     # Station name to find
-    station_name = "Hayes Basin"
+    station_name = "Cam"
 
     # Find station
     station_cam = None
@@ -46,6 +46,9 @@ def run():
     # Print level history
     for date, level in zip(dates, levels):
         print(date, level)
+
+    if len(dates) == 0 or len(levels) == 0:
+        print("Station {} has no valid data".format(station_name))
 
 
 if __name__ == "__main__":
