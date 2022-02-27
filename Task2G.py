@@ -32,7 +32,8 @@ def run():
             '''floating the date of tomorrow'''
             pred_rel_water_level = poly(tmr_num - d0)
             '''To record the progress'''
-            '''The following is to classify each station to different categories by current risk: '''
+            '''The following is to classify each station to different categories: '''
+            # predicted relative water level is compared to three values setting
         except:
             station.risk_level = "Unknown"
             continue
