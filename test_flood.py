@@ -12,7 +12,7 @@ def test_stations_level_over_threshold():
     output = stations_level_over_threshold(stations, tol)
     for each_outcome in output:
         assert each_outcome[1] > 0.8
-        assert each_outcome[1] < 100
+        assert each_outcome[1] < 700
         assert type(each_outcome[0]) == str
 
 # Task 2C:
