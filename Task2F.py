@@ -22,12 +22,12 @@ def run():
         for station in stations:
             if station.name in [each_station]:
                 id = station.measure_id
-                '''print(station.name)'''
                 '''find the corresponding measure_id for the five stations and plot its graph'''
                 dt = 2
                 dates, levels = fetch_measure_levels(id, dt=datetime.timedelta(days=dt))
                 if dates == []:
                     print("{} has no data in the past 10 days.".format(station.name))
+                    # Check all stations have valid data to plot
                 else:
                     plot_water_level_with_fit(station, dates, levels, p=4)
 

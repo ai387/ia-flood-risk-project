@@ -31,7 +31,6 @@ def run():
             tmr_num = date2num(tmr)
             '''floating the date of tomorrow'''
             pred_rel_water_level = poly(tmr_num - d0)
-            '''print(pred_rel_water_level)'''
             '''To record the progress'''
             '''The following is to classify each station to different categories by current risk: '''
         except:
@@ -67,8 +66,6 @@ def run():
             name_high.append(each.name)
         else:
             pass
-    '''List_of_severe_risk = list(dict.fromkeys(List_of_severe_risk))
-    List_of_high_list = list(dict.fromkeys(high_list))'''
     SEVERE = list(zip(List_of_severe_risk, pred_sev, name_sev))
     HIGH = list(zip(high_list, pred_high, name_high))
 

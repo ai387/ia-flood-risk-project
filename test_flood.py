@@ -12,8 +12,8 @@ def test_stations_level_over_threshold():
     output = stations_level_over_threshold(stations, tol)
     for each_outcome in output:
         assert each_outcome[1] > 0.8
-        assert each_outcome[1] < 700
-        assert type(each_outcome[0]) == str
+        assert each_outcome[1] < 700  #Making sure the relative water level is within the required range
+        assert type(each_outcome[0]) == str # Testing the name of water level is given
 
 # Task 2C:
 def test_stations_highest_rel_level():
@@ -21,10 +21,11 @@ def test_stations_highest_rel_level():
     update_water_levels(stations)
     N = 10
     output = stations_highest_rel_level(stations, N)
-    assert len(output) == 10
+    assert len(output) == 10 # Testing the number of stations in the outcome matches the required number
     station_names = []
     for each in output:
         station_names.append(each[1])
     for station in stations:
         if station.name in station_names:
             assert output[1] == station.relative_water_level()
+            # Assert whether the station name in the outcome match its relative water level
