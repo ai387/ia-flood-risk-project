@@ -15,7 +15,7 @@ def run():
     stations = build_station_list()
 
     # Station name to find
-    station_name = "Cam"
+    station_name = "Hayes Basin"
 
     # Find station
     station_cam = None
@@ -48,7 +48,7 @@ def run():
         print(date, level)
 
     if len(dates) == 0 or len(levels) == 0:
-        print("Station {} has no valid data".format(station_name))
+        print("Station {} has no valid data in the past 10 days.".format(station_name))
 
 
 if __name__ == "__main__":

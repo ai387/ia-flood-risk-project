@@ -26,7 +26,7 @@ def plot_water_levels(station, dates, levels):
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('date')
     plt.ylabel('water level (m)')
-    plt.xticks(rotation=45);
+    plt.xticks(rotation=45)
     plt.title(station)
 
     # Display plot
@@ -55,7 +55,17 @@ def plot_water_level_with_fit(station, dates, levels, p):
     # is evaluated using the shift x)
     x1 = x
     plt.plot(x1, poly(x1 - d0))
-    plt.title(station)
+    y_low, y_high = station.typical_range[0], station.typical_range[1]
+    plt.plot(dates, y_low * np.ones(len(dates)))
+    plt.plot(dates, y_high * np.ones(len(dates)))
+    plt.legend(["Past level data", "Typical High", "Typical Low"])
 
+    #Add the title, x and y labels, and rotate the xticks to make it show out clearly
+    plt.title(station)
+    plt.xlabel('date in floats')
+    plt.ylabel('water level (m)')
+    plt.xticks(rotation=45)
+
+    plt.tight_layout()
     # Display plot
     plt.show()

@@ -3,7 +3,8 @@ from tokenize import Number
 from .utils import sorted_by_key # noqa
 from .station import MonitoringStation  # importing the classes that are made in submodule
 from .stationdata import build_station_list # importing all data abt the stations
-
+import datetime
+from .datafetcher import fetch_measure_levels
 
 
 # TASK 2B part 2
@@ -22,9 +23,9 @@ def stations_level_over_threshold(stations, tol):
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() > 30:
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() > 700:
             print("Invalid Data due to storm (Station Name provided): {}".format(each_station.name))
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 30:  # sanity check lol
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 700:  # sanity check lol
             rel_water_level = each_station.relative_water_level()
             if rel_water_level > tol:
                 station_names.append(each_station.name)
@@ -53,12 +54,13 @@ relative to the typical range, is highest. The list should be sorted in descendi
 '''
 def stations_highest_rel_level(stations, N):
     wat_lev_list = []
+
     for each_station in stations:
         if each_station.relative_water_level() is None:
             continue  # if data doesn't exist
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() > 30:
-            print("Invalid Data due to storm (Station Name provided): {}".format(each_station.name))
-        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 30:  # sanity check lol
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() > 700:
+            print("Invalid Data (Station Name provided): {}".format(each_station.name))
+        if each_station.typical_range_consistent() is True and each_station.relative_water_level() < 700:  # sanity check lol
             rel_water_level = each_station.relative_water_level()
 
             station_name = each_station.name

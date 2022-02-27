@@ -5,7 +5,9 @@ import datetime
 from floodsystem import station
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
-from floodsystem.plot import plot_water_level_with_fit
+from floodsystem.plot import plot_water_level_with_fit, plot_water_levels
+import numpy as np
+import matplotlib.pyplot as plt
 
 def run():
     stations = build_station_list()
@@ -24,7 +26,11 @@ def run():
                 '''find the corresponding measure_id for the five stations and plot its graph'''
                 dt = 2
                 dates, levels = fetch_measure_levels(id, dt=datetime.timedelta(days=dt))
-                plot_water_level_with_fit(each_station, dates, levels, p=4)
+                if dates == []:
+                    print("{} has no data in the past 10 days.".format(station.name))
+                else:
+                    plot_water_level_with_fit(station, dates, levels, p=4)
+
 
 
 if __name__ == "__main__":
